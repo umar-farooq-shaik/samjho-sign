@@ -19,7 +19,26 @@ import {
 } from "lucide-react";
 import { askAboutDocument, synthesizeSpeech, transcribeSpeech } from "../lib/voice-assistant.server";
 
-export const Route = createFileRoute("/")({ component: Home });
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "SamjhoSign — Understand Before You Sign" },
+      {
+        name: "description",
+        content:
+          "Ask questions about agreements and hear clear, document-grounded explanations in your language.",
+      },
+      { property: "og:title", content: "SamjhoSign — Understand Before You Sign" },
+      {
+        property: "og:description",
+        content: "Understand agreement terms with clear answers grounded in the document.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Home,
+});
 
 type Message = { role: "user" | "assistant"; content: string };
 
